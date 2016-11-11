@@ -240,7 +240,7 @@ var Select2Component = Ember.Component.extend({
      */
     options.formatNoMatches = function(term) {
       var text = self.get('typeaheadNoMatchesText');
-      if (text instanceof Ember.Handlebars.SafeString) {
+      if (text instanceof Ember.String.htmlSafe) {
         text = text.string;
       }
 
