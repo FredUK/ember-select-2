@@ -164,7 +164,6 @@ var Select2Component = Ember.Component.extend({
       if (self.get('_typeaheadMode')) {
         var deferred = Ember.RSVP.defer('select2#query: ' + query.term);
 
-        self.sendAction('query', query, deferred);
 
         deferred.promise.then(function(result) {
           var data = result;
@@ -191,6 +190,9 @@ var Select2Component = Ember.Component.extend({
             errorThrown: reason
           });
         });
+
+        self.sendAction('query', query, deferred);
+
       } else {
         Ember.assert("select2 has no content!", self.get('content'));
 
