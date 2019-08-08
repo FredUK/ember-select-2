@@ -534,8 +534,10 @@ var Select2Component = Ember.Component.extend({
             !this.get('enabled');
 
       if (select) {
-        Ember.run(function() {
-          select.select2("readonly", disabled);
+        Ember.run.next(function() {
+          if (select.select2("readonly") !== disabled) {
+            select.select2("readonly", disabled);
+          }
         });
       }
     }
